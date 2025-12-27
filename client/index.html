@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>ProofStamp - Document Timestamping</title>
+    <link
+      rel="stylesheet"
+      href="styles.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>🔐 ProofStamp</h1>
+      <p class="subtitle">Secure document timestamping using cryptographic hashing</p>
+
+      <label
+        for="authorInput"
+        class="author-label"
+        >Author Name</label
+      >
+      <input
+        type="text"
+        id="authorInput"
+        class="author-input"
+        placeholder="Enter your name..."
+        required
+      />
+
+      <div
+        class="drop-zone"
+        id="dropZone"
+      >
+        <div class="drop-zone-icon">📄</div>
+        <div class="drop-zone-text">Drop your file here</div>
+        <div class="drop-zone-hint">or click to browse</div>
+        <input
+          type="file"
+          id="fileInput"
+          class="file-input"
+        />
+      </div>
+
+      <div
+        class="result"
+        id="result"
+      >
+        <div
+          class="result-title"
+          id="resultTitle"
+        ></div>
+        <div
+          class="result-content"
+          id="resultContent"
+        ></div>
+      </div>
+
+      <div class="verify-section">
+        <h2 style="font-size: 18px; margin-bottom: 15px; color: #333">Verify Signature</h2>
+        <input
+          type="text"
+          id="verifyHash"
+          class="verify-input"
+          placeholder="Enter hash to verify..."
+        />
+        <button
+          class="btn"
+          id="verifyBtn"
+        >
+          Verify
+        </button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "name": "proofstamp-client",
+  "version": "1.0.0",
+  "description": "ProofStamp Client",
+  "scripts": {
+    "build": "mkdir -p dist && cp index.html styles.css script.js dist/"
+  },
+  "devDependencies": {}
+}
