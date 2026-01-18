@@ -22,8 +22,11 @@ FROM nginx:alpine
 # Copy built files from builder stage
 COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Copy nginx configuration
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Copy nginx configuration template
+COPY nginx.conf /etc/nginx/conf.d/default.conf.template
+
+# Install envsubst (comes with gettext package)
+RUN apk add --no-cache gettext
 
 # Copy startup script
 COPY start.sh /start.sh
