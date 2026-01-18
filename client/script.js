@@ -7,7 +7,24 @@ const resultContent = document.getElementById("resultContent");
 const verifyHash = document.getElementById("verifyHash");
 const verifyBtn = document.getElementById("verifyBtn");
 
-const API_BASE_URL = "/api";
+// Get API base URL from config
+// For docker-compose (server:5000), use /api proxy
+// For separate deployments (Render), use backend URL directly
+const getApiBaseUrl = () => {
+  if (window.APP_CONFIG?.BACKEND_URL) {
+    const backendUrl = window.APP_CONFIG.BACKEND_URL;
+    // If it's the docker-compose service name, use proxy
+    if (backendUrl.includes('server:5000') || backendUrl.includes('localhost')) {
+      return "/api";
+    }
+    // Otherwise use the backend URL directly
+    return `${backendUrl}/api`;
+  }
+  // Fallback to proxy for docker-compose
+  return "/api";
+};
+
+const API_BASE_URL = getApiBaseUrl();
 
 // Update drop zone state based on author input
 function updateDropZoneState() {

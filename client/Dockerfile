@@ -25,6 +25,9 @@ COPY --from=builder /app/dist /usr/share/nginx/html
 # Copy nginx configuration template
 COPY nginx.conf /etc/nginx/conf.d/default.conf.template
 
+# Copy config.js template
+COPY config.js.template /usr/share/nginx/html/config.js.template
+
 # Install envsubst (comes with gettext package)
 RUN apk add --no-cache gettext
 

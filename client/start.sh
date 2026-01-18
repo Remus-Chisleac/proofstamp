@@ -25,12 +25,20 @@ rm -f /etc/nginx/conf.d/default.conf
 # This replaces ${BACKEND_URL} with the actual value
 envsubst '${BACKEND_URL}' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf
 
+# Generate config.js for frontend from template
+envsubst '${BACKEND_URL}' < /usr/share/nginx/html/config.js.template > /usr/share/nginx/html/config.js
+
 # Verify the replacement worked
 if ! grep -q "$BACKEND_URL" /etc/nginx/conf.d/default.conf; then
     echo "ERROR: Failed to replace BACKEND_URL in nginx config"
     echo "Generated config:"
     cat /etc/nginx/conf.d/default.conf
     exit 1
+fi
+
+# Verify config.js was generated
+if [ ! -f /usr/share/nginx/html/config.js ]; then
+    echo "WARNING: Failed to generate config.js"
 fi
 
 # Test nginx configuration

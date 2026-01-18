@@ -1,0 +1,5 @@
+// This file is generated at runtime by start.sh
+// It provides the backend URL to the frontend
+window.APP_CONFIG = {
+  BACKEND_URL: "${BACKEND_URL}"
+};
