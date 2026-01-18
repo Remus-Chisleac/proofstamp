@@ -9,3 +9,4 @@ sed -i "s|proxy_pass http://server:5000/api/;|proxy_pass ${BACKEND_URL}/api/;|g"
 # Start nginx
 exec nginx -g "daemon off;"
 
+
